@@ -4,4 +4,4 @@
 
 def floor(n: float) -> int:
     """ type-annotated function  """
-    return n
+    return int(n)
