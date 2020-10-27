@@ -24,7 +24,6 @@ class LRUCache(BaseCaching):
             del self.cache_data[discard]
             print("DISCARD: {}".format(discard))
 
-
     def get(self, key):
         """ Get an item by key """
         if key is None or key not in self.cache_data:
