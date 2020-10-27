@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-""" FIFO caching """
+""" LIFO caching """
 
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """ FIFO cache class """
+    """ LIFO cache class """
     def __init__(self):
         """ constructor """
-        self.order = []
         self.discard = None
         super().__init__()
 
@@ -17,11 +16,10 @@ class LIFOCache(BaseCaching):
         if key and item:
             self.cache_data[key] = item
             self.discard = key
-            self.order.append(key)
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            print("DISCARD: {}".format(self.discard))
             del self.cache_data[self.discard]
+            print("DISCARD: {}".format(self.discard))
 
     def get(self, key):
         """ Get an item by key """
