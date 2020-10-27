@@ -15,11 +15,13 @@ class LIFOCache(BaseCaching):
         """ Add an item in the cache """
         if key and item:
             self.cache_data[key] = item
-            self.discard = key
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             del self.cache_data[self.discard]
             print("DISCARD: {}".format(self.discard))
+
+        if key is not None:
+            self.discard = key
 
     def get(self, key):
         """ Get an item by key """
