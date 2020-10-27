@@ -18,9 +18,8 @@ class LIFOCache(BaseCaching):
             self.order.append(key)
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            print("DISCARD: {}".format(self.order[len(self.cache_data) - 1]))
             del self.cache_data[self.order[len(self.cache_data) - 1]]
-            del self.order[len(self.cache_data) - 1]
+            print("DISCARD: {}".format(self.order[len(self.cache_data) - 1]))
 
     def get(self, key):
         """ Get an item by key """
