@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" 0x05. Personal data """
 import re
 from typing import List
 
