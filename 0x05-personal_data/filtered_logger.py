@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ 0x05. Personal data """
 import logging
+import mysql.connector
+import os
 import re
 from typing import List
 
@@ -45,3 +47,15 @@ def get_logger() -> logging.Logger:
     logger.addHandler(handler)
 
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """
+    get_db function
+    """
+    username = os.getenv("PERSONAL_DATA_DB_USERNAME")
+    password = os.getenv("PERSONAL_DATA_DB_PASSWORD")
+    host = os.getenv("PERSONAL_DATA_DB_HOST")
+    database = os.getenv("PERSONAL_DATA_DB_NAME")
+    return mysql.connector.connect(user=username, password=password,
+                                   host=host, database=database)
