@@ -11,9 +11,9 @@ class Auth:
         """ public method """
         if path is not None and path[len(path) - 1] != '/':
             path += '/'
-        if path not in excluded_paths or path is None:
+        if excluded_paths is None or excluded_paths == []:
             return True
-        if excluded_paths is None or excluded_paths == '':
+        if path not in excluded_paths or path is None:
             return True
         return False
 
