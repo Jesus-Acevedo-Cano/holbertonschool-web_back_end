@@ -19,7 +19,7 @@ auth = None
 
 if os.getenv("AUTH_TYPE") == 'basic_auth':
     auth = BasicAuth()
-else if os.getenv("AUTH_TYPE") == "session_auth":
+elif os.getenv("AUTH_TYPE") == "session_auth":
     auth = SessionAuth()
 else:
     auth = Auth()
