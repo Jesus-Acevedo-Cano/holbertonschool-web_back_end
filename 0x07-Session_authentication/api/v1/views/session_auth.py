@@ -11,10 +11,10 @@ def session_login() -> str:
     """ handles all routes for the Session authentication """
     email = request.form.get('email')
     if not email:
-        return jsonify({ "error": "email missing" }), 400
+        return jsonify({"error": "email missing"}), 400
     password = request.form.get('password')
     if not password:
-        return jsonify({ "error": "password missing" }), 400
+        return jsonify({"error": "password missing"}), 400
 
     try:
         user = User.search({'email': email})
