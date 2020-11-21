@@ -83,3 +83,7 @@ class Auth:
             return None
         except NoResultFound:
             raise ValueError
+
+    def _generate_uuid() -> str:
+        """ Generate a new UUID """
+        return str(uuid.uuid4())
