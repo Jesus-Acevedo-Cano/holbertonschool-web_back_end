@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Redis basic """
-from redis.client import Redis
+import redis
 from typing import Union, Callable, Optional, Any
 import uuid
 
@@ -10,7 +10,7 @@ class Cache:
 
     def __init__(self):
         """ constructor """
-        self._redis = Redis()
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
