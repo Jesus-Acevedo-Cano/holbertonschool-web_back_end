@@ -22,9 +22,8 @@ class Cache:
     def get(self, key: str, fn: Optional[Callable] = None) ->\
             Union[str, bytes, int, float]:
         """ Reading from Redis and recovering original type """
-        if key:
-            result = self._redis.get(key)
-            if fn:
-                return fn(result)
-            else:
-                return result
+        result = self._redis.get(key)
+        if fn:
+            return fn(result)
+        else:
+            return result
