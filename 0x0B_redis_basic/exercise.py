@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Redis basic """
 import redis
+from sys import byteorder
 from typing import Union, Callable, Optional, Any
 import uuid
 
@@ -27,3 +28,13 @@ class Cache:
             return fn(result)
         else:
             return result
+
+    def get_str(self, result: bytes) -> str:
+        """ automatically parametrize Cache.get with
+        the correct conversion function """
+        return result.decode("utf-8")
+
+    def get_int(self, result: bytes) -> int:
+        """ automatically parametrize Cache.get with
+        the correct conversion function """
+        return int.from_bytes(result, byteorder)
