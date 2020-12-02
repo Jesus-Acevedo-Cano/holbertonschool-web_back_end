@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Redis basic """
-from redis.client import Redis
+import Redis
 from typing import Union, Callable, Optional, Any
 import uuid
 
@@ -13,8 +13,7 @@ class Cache:
         self._redis = Redis()
         self._redis.flushdb()
 
-    @call_history
-    @count_calls
+
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Store data in cache"""
         key = str(uuid.uuid4())
