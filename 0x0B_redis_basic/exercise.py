@@ -23,8 +23,8 @@ class Cache:
             Union[str, bytes, int, float]:
         """ Reading from Redis and recovering original type """
         if key:
-            res = self._redis.get(key)
+            result = self._redis.get(key)
             if fn:
-                return fn(res)
+                return fn(result)
             else:
-                return res
+                return result
