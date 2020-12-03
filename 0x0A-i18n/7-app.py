@@ -2,6 +2,7 @@
 """ flask simple api """
 from flask import Flask, render_template, g
 from flask_babel import Babel, gettext, request
+from pytz import timezone, exceptions
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -28,7 +29,7 @@ app.config.from_object(Config)
 @app.route('/')
 def hello():
     """ Hello world """
-    return render_template('6-index.html')
+    return render_template('7-index.html')
 
 
 @babel.localeselector
@@ -52,6 +53,20 @@ def get_user():
 def before_request():
     """ execute before all other functions """
     g.user = get_user()
+
+
+@babel.timezoneselector
+def get_timezone():
+    """ return URL-provided or user time zone """
+    log = get_user()
+    if log:
+        locale = log['timezone']
+    if request.args.get('timezone'):
+        locale = request.args.get('timezone')
+    try:
+        return timezone(locale).zone
+    except Exception:
+        return None
 
 
 if __name__ == "__main__":
